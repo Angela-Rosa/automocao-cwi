@@ -12,7 +12,7 @@ public class SetupTest extends BaseTests{
     @Test
     public void testOpeningBrowserAndLoadingPage(){
         assertTrue(Browser.getCurrentDriver().getCurrentUrl().contains(Utils.getBaseUrl()));
-        System.out.println("Abrimos o navegador e carregamos a url!");
+        System.out.println("Abrimos o navegador e carregamos a url corretamente!");
 
     }
 
