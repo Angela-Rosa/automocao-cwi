@@ -10,7 +10,8 @@ public class BaseTests {
     public void setup(){
         Browser.loadpage(Utils.getBaseUrl());
     }
-@After
+
+    @After
     public void tearDown(){
         Browser.close();
     }
