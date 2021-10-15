@@ -1,9 +1,7 @@
 package elementMapper;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.Browser;
 
 public class LoginPageElementMapper {
     // Verificar no video, qual a melhor pratica para mapeamento de elemnto por ID
@@ -15,6 +13,14 @@ public class LoginPageElementMapper {
     @FindBy(id= "passwd")
     public WebElement passwd;
 
+    @FindBy(id= "SubmitLogin")
     public WebElement SubmitLogin;
+
+    @FindBy(id= "email_create")
+    public  WebElement email_create;
+
+    @FindBy(id = "SubmitCreate")
+    public WebElement SubmitCreate;
+
 
 }

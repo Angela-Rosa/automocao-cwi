@@ -2,13 +2,9 @@ package pageObjects;
 
 import elementMapper.HomePageElementMapper;
 import org.openqa.selenium.support.PageFactory;
-import org.w3c.dom.html.HTMLInputElement;
 import utils.Browser;
 
 public class HomePage extends HomePageElementMapper {
-
-
-
 
     public HomePage() {
         PageFactory.initElements(Browser.getCurrentDriver(), this);

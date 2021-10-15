@@ -11,12 +11,10 @@ public class SearchPage extends SearchPageElementMapper {
 
     public String getTextNavigation_page(){
         return navigation_page.getText();
-
     }
 
     public String getTextLighter(){
         return lighter.getText();
-
     }
 
     public String getTextHeading_counter(){
