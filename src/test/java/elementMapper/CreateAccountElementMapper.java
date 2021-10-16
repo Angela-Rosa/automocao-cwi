@@ -55,8 +55,8 @@ public class CreateAccountElementMapper {
     @FindBy(id="optin")
     public WebElement optin;
 
-    ///////// YOUR ADDRESS////////
-    //firstname
+    /////// YOUR ADDRESS////////
+    //firstname//
     @FindBy(id="firstname")
     public WebElement firstname;
 

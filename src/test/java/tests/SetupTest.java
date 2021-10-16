@@ -24,6 +24,7 @@ public class SetupTest extends BaseTests{
         HomePage home = new HomePage();
         LoginPage login= new LoginPage();
         home.clickBtnLogin();
+
         System.out.println("Clicou em  Sing in e redirecionou");
         assertTrue(getCurrentDriver().getCurrentUrl()
             .contains(Utils.getBaseUrl().concat("index.php?controller=authentication&back=my-account")));
@@ -45,12 +46,15 @@ public class SetupTest extends BaseTests{
 
        String quest= "DRESS";
        String questResultQtd= "7";
-        //Iniciar as paginas
+
+       //Iniciar as paginas
         HomePage home = new HomePage();
         SearchPage search= new SearchPage();
+
         //Fazer a pesquisa
         home.doSearch(quest);
-      //Validar a pequisa
+
+        //Validar a pequisa
         assertTrue(search.isSearchPage());
         assertEquals(search.getTextLighter().replace("\"", ""), quest);
         assertThat(search.getTextHeading_counter(), CoreMatchers.containsString(questResultQtd));
@@ -88,9 +92,69 @@ public class SetupTest extends BaseTests{
     //Verificar se produto esta na pagina detalhada correto
         assertEquals(pdp.getProductNamePDP(), nameProductCategory);
 
+    }
 
+    @Test
+     public void testAddProductToCartPage() {
+
+        //Acessar a pagina de produtos
+        testAddProductToProductPage();
+
+        //Iniciar as paginas
+        ProductPage pdp = new ProductPage();
+
+        CartPage cart = new CartPage();
+
+        //Salvar o nome do produto na pagina de PDP
+        String nameProductPDP = pdp.getProductNamePDP();
+
+        //Clicar no botão de adcionar ao carrinho
+        pdp.clickButtonAddToCart();
+
+        //Clicar no botão Proceed To Checkout da modal
+        pdp.clickButtonModalProceedToCheckout();
+
+        // Validar nome do produto dentro do carrinho
+        assertTrue(cart.getNameProduct().equals(nameProductPDP));
+
+    }
+    @Test
+    public void testPageSummaryShopping(){
+
+    }
+
+    @Test
+    public void testPageAdrres(){
+
+    }
+
+    @Test
+    public void testPageShipping(){
+
+    }
+
+    @Test
+    public void testPagePayment(){
+
+    }
+
+    @Test
+    public void testPageOrderSummary(){
+
+    }
+
+    @Test
+    public void testPageOrderConfirmation(){
 
     }
 
 
+
+
 }
+
+
+
+
+
+
