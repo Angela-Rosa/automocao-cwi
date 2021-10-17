@@ -1,0 +1,4 @@
+elementMapper\CartPageElementMapper.class
+pageObjects\CreateAccountPage.class
+elementMapper\CreateAccountElementMapper.class
+pageObjects\CartPage.class
