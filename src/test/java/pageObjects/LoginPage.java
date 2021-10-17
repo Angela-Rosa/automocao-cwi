@@ -1,12 +1,8 @@
 package pageObjects;
 
 import elementMapper.LoginPageElementMapper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import utils.Browser;
-import utils.Utils;
-
-import static org.junit.Assert.assertTrue;
 
 public class LoginPage extends LoginPageElementMapper {
 
@@ -23,6 +19,13 @@ public class LoginPage extends LoginPageElementMapper {
 
     public void clickBtnSubmitLogin(){
         SubmitLogin.click();
+    }
+
+    public  void fillEmailCreate(String email){
+        email_create.sendKeys(email);
+    }
+    public void clickBtnSubmitCreateAccount(){
+        SubmitCreate.click();
     }
 
 

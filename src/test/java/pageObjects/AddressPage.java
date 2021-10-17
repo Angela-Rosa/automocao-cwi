@@ -20,17 +20,39 @@ public class AddressPage extends AddressElementMapper {
         addressesAreEquals.click();
     }
 
-    public void selectAddress(){
-        id_address_delivery.selectByIndex(0);
+    public void selectAddress(int index){
+        id_address_delivery.selectByIndex(index);
     }
 
     public void fillTextComment(String cmt){
         textcomment.sendKeys(cmt);
     }
 
-    public  void clickproceedToCheckout(){
-        proceedToCheckout.click();
+    public  void clickproceedToCheckout(){ proceedToCheckout.click();
     }
 
+    // Obtem o titulo da tela Shipping
+    public String getShippingTitlePage(){
+        return page_heading.getText();
+    }
 
+    //Selecionar frete
+    public  void clickdelivery_option(){
+        delivery_option.click();
+    }
+
+    //Clicar no termos de aceite
+    public void clickcgv(){cgv.click();
+    }
+
+    // obter valor frete
+    public String getTextShipping(){
+        return delivery_option_price.getText();
+    }
+
+    public  void clickproceedToCheckoutShipping(){
+        proceedToCheckoutShipping.click();
+    }
 }
+
+

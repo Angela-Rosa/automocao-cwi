@@ -19,8 +19,8 @@ public class CreateAccountPage extends CreateAccountElementMapper {
         return namecreataccountpage.getText();
     }
 
-
     //Metodos de  clicar nos campos ou inserir informações
+    //SEÇÃO YOUR PERSONAL INFORMATION
 
     public void clickOptid_gender1(){
         id_gender1.click();
@@ -66,6 +66,68 @@ public class CreateAccountPage extends CreateAccountElementMapper {
     }
 
     ///////// Metodos de click e inserção da secção do formulario YOUR ADDRESS/////
+    public void fillFirstNameYourAddressSection(String fname){
+        firstname.sendKeys(fname);
+    }
+
+    public void fillLastNameYourAddressSection(String name){
+        lastname.sendKeys(name);
+    }
+
+    public void fillCompany(String textCp ) {
+        company.sendKeys(textCp);
+    }
+
+    public void fillAddress1(String textAds1){
+        address1.sendKeys(textAds1);
+
+    }
+    public void fillAddress2(String textAds2) {
+        address2.sendKeys(textAds2);
+    }
+
+    public void fillCity(String textCty) {
+        city.sendKeys(textCty);
+    }
+
+    public void selectId_State(String idState){
+        id_state.sendKeys(idState);
+    }
+
+    public void fillPostCode(String PostCd) {
+        postcode.sendKeys(PostCd);
+    }
+
+    public void selectId_Country(String idCountry) {
+        id_country.sendKeys(idCountry);
+    }
+
+    public void fillOther(String Other) {
+        other.sendKeys(Other);
+    }
+
+    public void fillPhone(String Phone1) {
+        phone.sendKeys(Phone1);
+    }
+
+    public void fillPhoneMobile(String PhoneM) {
+        phone_mobile.sendKeys(PhoneM);
+    }
+
+    public void fillMyAlias(String Alias) {
+        alias.sendKeys(Alias);
+    }
+
+    public void clickRegister(){
+        submitAccount.click();
+    }
 
 
-}
+
+
+
+
+
+
+
+    }

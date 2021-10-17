@@ -31,9 +31,4 @@ public class SummaryShoppingPageElementMapper {
     @FindBy(css = "a[class*=\"button\"][title=\"Check out\"]")
     public WebElement proceedToCheckout;
 
-
-
-
-
-
 }

@@ -15,20 +15,24 @@ public class SummaryShoppingPage extends SummaryShoppingPageElementMapper {
         return shoppingCartSummary.getText();
     }
 
+    //Inserir quantidade
+    public void fillQty(String qtyvalue){
+        Qty.sendKeys(qtyvalue);
+    }
+
+    // Obtem o valor do produto
+    public String getTextTotal_products(){return totalProducts.getText();
+    }
+
     // Obtem o valor do frete
     public String getTextTotalShipping(){
         return totalShipping.getText();
     }
 
     // Obtem o valor total
-    public String getTextTotal(){
-        return Total.getText();
+    public String getTextTotal(){return Total.getText();
     }
-
-    //Inserir quantidade
-    public void fillQty(String qtyvalue){
-        Qty.sendKeys(qtyvalue);
-    }
+    //Validar Checkout de compra
 
     public void clickProceedCheckout(){
 
