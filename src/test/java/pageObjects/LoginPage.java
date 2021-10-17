@@ -10,7 +10,7 @@ public class LoginPage extends LoginPageElementMapper {
         PageFactory.initElements(Browser.getCurrentDriver(), this);
     }
     public void fillEmail(){
-        email.sendKeys("rrsetcwi+autopractice@gmail.com");
+        email.sendKeys("angela.rousa@gmail.com");
     }
 
     public void fillPasswd(){

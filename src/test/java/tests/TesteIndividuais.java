@@ -7,10 +7,9 @@ import pageObjects.*;
 import utils.Utils;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
 import static utils.Browser.getCurrentDriver;
 
-public class SetupTest extends BaseTests{
+public class TesteIndividuais extends BaseTests{
 
 
     @Test
@@ -20,98 +19,49 @@ public class SetupTest extends BaseTests{
 
     }
     @Test
-    public void testLogin(){
+    public void realizarCompra(){
         //Iniciar as paginas
         HomePage home = new HomePage();
         LoginPage login= new LoginPage();
+        CategoryPage category= new CategoryPage();
+        ProductPage pdp = new ProductPage();
+        CartPage cart = new CartPage();
+        SummaryShoppingPage summaryShopping = new SummaryShoppingPage();
+        AddressPage addressP= new AddressPage();
+        PaymentPage paymentP= new PaymentPage();
+
+        //Ações de Login
         home.clickBtnLogin();
 
-        System.out.println("Clicou em  Sing in e redirecionou");
         assertTrue(getCurrentDriver().getCurrentUrl()
-            .contains(Utils.getBaseUrl().concat("index.php?controller=authentication&back=my-account")));
-
+                .contains(Utils.getBaseUrl().concat("index.php?controller=authentication&back=my-account")));
         login.fillEmail();
-        System.out.println("Preencheu o email");
-
         login.fillPasswd();
-        System.out.println("Preencheu a senha");
-
         login.clickBtnSubmitLogin();
-        System.out.println("Clicou em  Sing in");
         assertTrue(getCurrentDriver().getCurrentUrl().
                 contains(Utils.getBaseUrl().concat("index.php?controller=my-account")));
-
-        System.out.println("Validou a url do login");
         assertTrue(getCurrentDriver().findElement(By.className("page-heading"))
                 .getText().contains("MY ACCOUNT"));
-
-        System.out.println("Validou minha conta com sucesso");
-
-    }
-    @Test
-    public void testSearch(){
-
-       String quest= "DRESS";
-       String questResultQtd= "7";
-
-       //Iniciar as paginas
-        HomePage home = new HomePage();
-        SearchPage search= new SearchPage();
-
-        //Fazer a pesquisa
-        home.doSearch(quest);
-
-        //Validar a pequisa
-        assertTrue(search.isSearchPage());
-        assertEquals(search.getTextLighter().replace("\"", ""), quest);
-        assertThat(search.getTextHeading_counter(), CoreMatchers.containsString(questResultQtd));
-
-    }
-
-    @Test
-    public void testAcessCategoryTshirts(){
-
-        //Iniciar as paginas
-        CategoryPage category= new CategoryPage();
+        //testes de Acess Category Tshirts
 
         //Clicar na categoria T-SHIRTS
-        // home.clickCategoryTshirts(menuTshirts);
         getCurrentDriver().findElement(By.linkText("T-SHIRTS")).click();
 
         //Validar o clique na categoria  correta T-shirts
         assertTrue(category.isPageTshirts());
-    }
 
-    @Test
-    public void testAddProductToProductPage(){
-    //Acessar a categoria T-shirts
-    testAcessCategoryTshirts();
+        // testes de  Add Product To Product Page
 
-    //Iniciar as paginas
-        CategoryPage category= new CategoryPage();
-        ProductPage pdp= new ProductPage();
-
-    //Exibir nome do produto na pagina de categoria
+        //Exibir nome do produto na pagina de categoria
         String nameProductCategory = category.getProductNameCategory();
 
-    // Clicar em more e direcionar para pagina o produto.
-    category.clickProductAddToProductPage();
+        // Clicar em more e direcionar para pagina o produto.
+        category.clickProductAddToProductPage();
 
-    //Verificar se produto esta na pagina detalhada correta
+        //Verificar se produto esta na pagina detalhada correta
         assertEquals(pdp.getProductNamePDP(), nameProductCategory);
 
-    }
-
-    @Test
-     public void testAddProductToCartPage() {
-
-
-        //Acessar a pagina de produtos
-        testAddProductToProductPage();
-
-        //Iniciar as paginas
-        ProductPage pdp = new ProductPage();
-        CartPage cart = new CartPage();
+        //testes de Add Product To Cart Page
 
         //Salvar o nome do produto na pagina de PDP
         String nameProductPDP = pdp.getProductNamePDP();
@@ -125,39 +75,24 @@ public class SetupTest extends BaseTests{
         // Validar nome do produto dentro do carrinho
         assertTrue(cart.getNameProduct().equals(nameProductPDP));
 
-    }
-    @Test
-    public void testPageSummaryShopping(){
-
-        //Iniciar as paginas
-        SummaryShoppingPage summaryShopping = new SummaryShoppingPage();
+        //testes de Page Summary Shopping
 
         // inserindo Qty
         summaryShopping.fillQty("1");
 
-        //// Valor do produto
-        String valorProduto=summaryShopping.getTextTotal_products();
-        assertEquals(valorProduto,"$16.51");
+        // Validar Valor do produto
+        assertEquals(summaryShopping.getTextTotal_products(),"$16.51");
 
-        // Valor do frete
-        String valorTotalShipping= summaryShopping.getTextTotalShipping();
-        assertEquals(valorTotalShipping,"$2.00");
+        // Validar Valor do frete
+        assertEquals(summaryShopping.getTextTotalShipping(),"$2.00");
 
-        // Valor total
-        String valorTotal= summaryShopping.getTextTotal();
-        assertEquals(valorTotal, "$18.51");
+        //Validar  Valor total
+        assertEquals(summaryShopping.getTextTotal(), "$18.51");
 
-        //Validar Checkout de compra
+        //clicar Checkout de compra
         summaryShopping.clickProceedCheckout();
-        }
 
-
-    @Test
-    public void testPageAddress(){
-
-        //Tela Address
-        AddressPage addressP= new AddressPage();
-
+        // testes de Page Address
         //Selecionar My adress
         addressP.selectAddress(0);
 
@@ -167,7 +102,7 @@ public class SetupTest extends BaseTests{
         //Preencher comentários
         addressP.fillTextComment("Favor entrar em contato antes de realizar a entrega");
 
-       // Clique em Proceed to Checkout
+        // Clique em Proceed to Checkout
         addressP.clickproceedToCheckout();
 
         // selecionar o frete escolhido
@@ -181,12 +116,8 @@ public class SetupTest extends BaseTests{
 
         // clicar em proceded to checkout
         addressP.clickproceedToCheckoutShipping();
-        }
 
-
-    @Test
-    public void testPagePayment(){
-        PaymentPage paymentP= new PaymentPage();
+        // testes de  Page Payment
 
         paymentP.clickBankwire();
 
@@ -206,16 +137,8 @@ public class SetupTest extends BaseTests{
         assertTrue(paymentP.getTexttheseDetails().contains("xyz"));
         assertTrue( paymentP.getTextbankName().contains("RTP"));
 
-    }
-    @Test
-    public  void realizarCompra(){
-        testLogin();
-        testAcessCategoryTshirts();
-        testAddProductToProductPage();
-        testAddProductToCartPage();
-        testPageSummaryShopping();
-        testPageAddress();
-        testPagePayment();
+
+
     }
 
     @Test
@@ -223,12 +146,16 @@ public class SetupTest extends BaseTests{
         HomePage home = new HomePage();
         LoginPage login= new LoginPage();
         CreateAccountPage createAccountP= new CreateAccountPage();
-
+        MyAccountPage myAccountP= new MyAccountPage();
         home.clickBtnLogin();
 
         //SEÇÃO YOUR PERSONAL INFORMATION
         // Inserindo o email  para criação de conta
-        login.fillEmailCreate("COLOCAR AQUI O EMAIL PARA CRIAR CONTA");
+        String emailcliente= "Angela97q12ousa@gmail.com";
+        String primeironome="testecwi";
+        String ultimonome=" santos";
+
+        login.fillEmailCreate(emailcliente);
 
         //Clicar em create account
         login.clickBtnSubmitCreateAccount();
@@ -237,25 +164,22 @@ public class SetupTest extends BaseTests{
         createAccountP.clickOptid_gender1();
 
         // Inserir nome do usuario
-        createAccountP.fillFirstName("Nome Usuário de teste");
+        createAccountP.fillFirstName(primeironome);
 
         //Inserir Ultimo nome do usuario
-        createAccountP.fillLastName("Ultimo nome do usuário");
-
-        //Inserir Email
-        createAccountP.fillEmail("\"angela.rousa@gmail.com");
+        createAccountP.fillLastName(ultimonome);
 
         //Inserir senha
         createAccountP.fillPassword("teste123");
 
         //Selecionar dia
-        createAccountP.selectDays("days");
+        createAccountP.selectDays("1");
 
         //Selecionar mes
-        createAccountP.selectMoth("months");
+        createAccountP.selectMoth("July");
 
         //Selecionar ano
-        createAccountP.selectYears("years");
+        createAccountP.selectYears("1990");
 
         //Sign up for our newsletter!
         createAccountP.clickOptnewsletter();
@@ -264,55 +188,73 @@ public class SetupTest extends BaseTests{
         createAccountP.clickOptSpecialOffers();
 
         //SEÇÃO DO FORMULÁRIO YOUR ADDRESS
-        //Confirmar nome do usuario
-        createAccountP.fillFirstNameYourAddressSection("Confirmação do nome do usuário");
-
-        //Confirmar último nome do usuario
-       // createAccountP.fillLastNameYourAddressSection("\"Confirmação do último nome do usuário");
-        createAccountP.fillLastNameYourAddressSection("Confirmação do último nome do usuário");
 
         //Company
-        createAccountP.fillCompany("company");
+        createAccountP.fillCompany("empresa fantasia");
 
         //Endereço 1
-        createAccountP.fillAddress1("address1");
+        createAccountP.fillAddress1("casa de praia");
 
         //Endereço 2
-        createAccountP.fillAddress2("address2");
+        createAccountP.fillAddress2("apartamento do centro");
 
         //City
-        createAccountP.fillCity("city");
+        createAccountP.fillCity("Salvador");
 
         //State
-        createAccountP.selectId_State("id_state");
+        createAccountP.selectId_State("Alabama");
 
         //Zip/Postal Code
-        createAccountP.fillPostCode("postcode");
+        createAccountP.fillPostCode("58322");
 
         //Country
-        createAccountP.selectId_Country("country");
+        createAccountP.selectId_Country("United States");
 
         //Additional information
-        createAccountP.fillOther("other");
+        createAccountP.fillOther("entre em contato");
 
         //Home phone
-        createAccountP.fillPhone("phone");
+        createAccountP.fillPhone("123456789");
 
         //Mobile phone
-        createAccountP.fillPhoneMobile("phone_mobile");
+        createAccountP.fillPhoneMobile("123456780");
 
         //Assign an address alias for future reference
-        createAccountP.fillMyAlias("alias");
+        createAccountP.fillMyAlias("meuEndereco");
 
         //Register
         createAccountP.clickRegister();
 
+        // Valida se a mensagem de usuario criado com sucesso é exibida
+        assertTrue(myAccountP.isMsgCreateAccountView());
+
+        //Valida se o usuario logado foi o usuario criado
+        assertTrue(myAccountP.getNameLogin().contains(primeironome));
+        assertTrue(myAccountP.getNameLogin().contains(ultimonome));
+
+    }
+    @Test
+    public void testSearch(){
+        //Iniciar as paginas
+        HomePage home = new HomePage();
+        SearchPage search= new SearchPage();
+
+        String quest= "DRESS";
+        String questResultQtd= "7";
+
+        //Fazer a pesquisa
+        home.doSearch(quest);
+
+        //Validar a pequisa
+        assertTrue(search.isSearchPage());
+        assertEquals(search.getTextLighter().replace("\"", ""), quest);
+        assertThat(search.getTextHeading_counter(), CoreMatchers.containsString(questResultQtd));
 
     }
 
 
 
-    }
+}
 
 
 
