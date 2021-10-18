@@ -2,7 +2,6 @@ package elementMapper;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class AddressElementMapper {
 
@@ -13,7 +12,7 @@ public class AddressElementMapper {
 
     // Choose a delivery address
     @FindBy(id = "id_address_delivery")
-    public Select id_address_delivery;
+    public WebElement id_address_delivery;
 
     // Use the delivery address as the billing address.
     @FindBy(id = "addressesAreEquals")

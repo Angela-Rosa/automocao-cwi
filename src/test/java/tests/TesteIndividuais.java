@@ -31,18 +31,28 @@ public class TesteIndividuais extends BaseTests{
         PaymentPage paymentP= new PaymentPage();
 
         //Ações de Login
+        //Clicar em botão Sign in
         home.clickBtnLogin();
 
         assertTrue(getCurrentDriver().getCurrentUrl()
                 .contains(Utils.getBaseUrl().concat("index.php?controller=authentication&back=my-account")));
+        //Inserir email
         login.fillEmail();
+
+        //Inserir senha
         login.fillPasswd();
+
+        //Clicar para validar login
         login.clickBtnSubmitLogin();
         assertTrue(getCurrentDriver().getCurrentUrl().
                 contains(Utils.getBaseUrl().concat("index.php?controller=my-account")));
         assertTrue(getCurrentDriver().findElement(By.className("page-heading"))
                 .getText().contains("MY ACCOUNT"));
-        //testes de Acess Category Tshirts
+
+
+
+
+        //Testes de Acess Category Tshirts
 
         //Clicar na categoria T-SHIRTS
         getCurrentDriver().findElement(By.linkText("T-SHIRTS")).click();
@@ -89,15 +99,14 @@ public class TesteIndividuais extends BaseTests{
         //Validar  Valor total
         assertEquals(summaryShopping.getTextTotal(), "$18.51");
 
-        //clicar Checkout de compra
+        //Clicar Checkout de compra
         summaryShopping.clickProceedCheckout();
-
-        // testes de Page Address
+        // Testes de Page Address
         //Selecionar My adress
         addressP.selectAddress(0);
 
         //Clicar em Adrress
-        addressP.clickaddressesAreEquals();
+//        addressP.clickaddressesAreEquals();
 
         //Preencher comentários
         addressP.fillTextComment("Favor entrar em contato antes de realizar a entrega");
@@ -105,7 +114,7 @@ public class TesteIndividuais extends BaseTests{
         // Clique em Proceed to Checkout
         addressP.clickproceedToCheckout();
 
-        // selecionar o frete escolhido
+        // Selecionar o frete escolhido
         addressP.clickdelivery_option();
 
         //Termo de Aceite
@@ -114,29 +123,27 @@ public class TesteIndividuais extends BaseTests{
         //Verificar valor do frete
         assertTrue(addressP.getTextShipping().equals("$2.00"));
 
-        // clicar em proceded to checkout
+        // Clicar em proceded to checkout
         addressP.clickproceedToCheckoutShipping();
 
-        // testes de  Page Payment
-
+        // Testes de  Page Payment
         paymentP.clickBankwire();
 
-        // verificar qual a opção de pagamento escolhida
+        // Verificar qual a opção de pagamento escolhida
         assertTrue(paymentP.getTextpaymentMethodSelected().contains("BANK-WIRE PAYMENT"));
 
-        //verificar o valor total
+        //Verificar o valor total
         assertTrue(paymentP.getTextAmount().contains("$18.51"));
 
-        // clicar em confirmar compra
+        // Clicar em confirmar compra
         paymentP.clickConfirmMyOrder();
 
-        // verificar as informações e validação de compra
+        // Verificar as informações e validação de compra
         assertTrue(paymentP.getOrderConfirmationPage().contains("Your order on My Store is complete."));
         assertTrue( paymentP.getTextprice().contains("$18.51"));
         assertTrue(paymentP.getTextnameAccountOwner().contains("Pradeep Macharla"));
         assertTrue(paymentP.getTexttheseDetails().contains("xyz"));
         assertTrue( paymentP.getTextbankName().contains("RTP"));
-
 
 
     }
@@ -160,7 +167,7 @@ public class TesteIndividuais extends BaseTests{
         //Clicar em create account
         login.clickBtnSubmitCreateAccount();
 
-        //cClicar em mr
+        //Clicar em mr
         createAccountP.clickOptid_gender1();
 
         // Inserir nome do usuario

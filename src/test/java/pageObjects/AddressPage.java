@@ -2,6 +2,7 @@ package pageObjects;
 
 import elementMapper.AddressElementMapper;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import utils.Browser;
 
 
@@ -21,7 +22,8 @@ public class AddressPage extends AddressElementMapper {
     }
 
     public void selectAddress(int index){
-        id_address_delivery.selectByIndex(index);
+        Select selectObject = new Select(id_address_delivery);
+        selectObject.selectByIndex(index);
     }
 
     public void fillTextComment(String cmt){

@@ -115,6 +115,7 @@ public class CreateAccountPage extends CreateAccountElementMapper {
     }
 
     public void fillMyAlias(String Alias) {
+        alias.clear();
         alias.sendKeys(Alias);
     }
 

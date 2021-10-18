@@ -16,19 +16,23 @@ public class SummaryShoppingPageElementMapper {
     @FindBy (className = "step_curret first")
     public WebElement summary;
 
-    @FindBy(className = "cart_quantity item")
+    @FindBy(css= "input[class*=cart_quantity]")
     public WebElement Qty;
 
-    @FindBy(id = "total_products")
+    @FindBy(css = "#total_product")
     public WebElement totalProducts;
 
-    @FindBy(id = "total-shipping")
+    @FindBy(css = "#total_shipping")
     public WebElement totalShipping;
+    //#\#total\-shipping
 
-    @FindBy(id = "total_price_container")
+    @FindBy(css = "#total_price")
     public WebElement Total;
 
-    @FindBy(css = "a[class*=\"button\"][title=\"Check out\"]")
+    //id=total_price_container
+
+    @FindBy(css = "#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium")
     public WebElement proceedToCheckout;
 
 }
+//"a[class*=\"button\"][title=\"Check out\"]"

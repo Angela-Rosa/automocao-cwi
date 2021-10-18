@@ -17,7 +17,9 @@ public class SummaryShoppingPage extends SummaryShoppingPageElementMapper {
 
     //Inserir quantidade
     public void fillQty(String qtyvalue){
-        Qty.sendKeys(qtyvalue);
+       Qty.clear();
+       Qty.sendKeys(qtyvalue);
+
     }
 
     // Obtem o valor do produto
@@ -35,7 +37,6 @@ public class SummaryShoppingPage extends SummaryShoppingPageElementMapper {
     //Validar Checkout de compra
 
     public void clickProceedCheckout(){
-
         proceedToCheckout.click();
     }
 
