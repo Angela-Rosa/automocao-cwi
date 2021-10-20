@@ -1,9 +1,9 @@
-package elementMapper;
+    package elementMapper;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+    import org.openqa.selenium.WebElement;
+    import org.openqa.selenium.support.FindBy;
 
-public class SummaryShoppingPageElementMapper {
+    public class SummaryShoppingPageElementMapper {
     //Página de compra
     @FindBy (className = "navigation_Page")
     public WebElement yourShoppingCart;
@@ -24,15 +24,12 @@ public class SummaryShoppingPageElementMapper {
 
     @FindBy(css = "#total_shipping")
     public WebElement totalShipping;
-    //#\#total\-shipping
 
     @FindBy(css = "#total_price")
     public WebElement Total;
 
-    //id=total_price_container
-
-    @FindBy(css = "#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium")
+    @FindBy(css = "p[class*=cart]>a[class*=btn][title=\"Proceed to checkout\"]")
     public WebElement proceedToCheckout;
 
 }
-//"a[class*=\"button\"][title=\"Check out\"]"
+

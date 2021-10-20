@@ -15,6 +15,7 @@ public class CategoryPageElementMapper {
 
     @FindBy(css = ".product_list .product-name")
     public WebElement productNameCategory;
+
     }
 
 

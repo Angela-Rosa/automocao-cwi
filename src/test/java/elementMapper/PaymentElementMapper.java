@@ -1,10 +1,10 @@
-package elementMapper;
+   package elementMapper;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
+   import org.openqa.selenium.WebElement;
+   import org.openqa.selenium.support.FindBy;
+   import org.openqa.selenium.support.ui.Select;
 
-public class PaymentElementMapper {
+   public class PaymentElementMapper {
     // titulo da pagina
     @FindBy(css = "h1[class=page-heading]")
     public WebElement page_heading;

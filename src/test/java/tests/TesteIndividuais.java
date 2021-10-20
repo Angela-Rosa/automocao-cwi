@@ -1,15 +1,17 @@
-package tests;
+  package tests;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import pageObjects.*;
-import utils.Utils;
+   import io.qameta.allure.Description;
+   import io.qameta.allure.Story;
+   import org.hamcrest.CoreMatchers;
+   import org.junit.Test;
+   import org.openqa.selenium.By;
+   import pageObjects.*;
+   import utils.Utils;
 
-import static org.junit.Assert.*;
-import static utils.Browser.getCurrentDriver;
+   import static org.junit.Assert.*;
+   import static utils.Browser.getCurrentDriver;
 
-public class TesteIndividuais extends BaseTests{
+   public class TesteIndividuais extends BaseTests{
 
 
     @Test
@@ -18,6 +20,9 @@ public class TesteIndividuais extends BaseTests{
         System.out.println("Abrimos o navegador e carregamos a url do site de teste!");
 
     }
+
+    @Story("Realizar uma compra  de produto")
+    @Description("Realizar uma compra  de um produto da loja com sucesso")
     @Test
     public void realizarCompra(){
         //Iniciar as paginas
@@ -49,11 +54,7 @@ public class TesteIndividuais extends BaseTests{
         assertTrue(getCurrentDriver().findElement(By.className("page-heading"))
                 .getText().contains("MY ACCOUNT"));
 
-
-
-
         //Testes de Acess Category Tshirts
-
         //Clicar na categoria T-SHIRTS
         getCurrentDriver().findElement(By.linkText("T-SHIRTS")).click();
 
@@ -101,12 +102,13 @@ public class TesteIndividuais extends BaseTests{
 
         //Clicar Checkout de compra
         summaryShopping.clickProceedCheckout();
+
         // Testes de Page Address
         //Selecionar My adress
         addressP.selectAddress(0);
 
         //Clicar em Adrress
-//        addressP.clickaddressesAreEquals();
+        //addressP.clickaddressesAreEquals();
 
         //Preencher comentários
         addressP.fillTextComment("Favor entrar em contato antes de realizar a entrega");
@@ -144,10 +146,12 @@ public class TesteIndividuais extends BaseTests{
         assertTrue(paymentP.getTextnameAccountOwner().contains("Pradeep Macharla"));
         assertTrue(paymentP.getTexttheseDetails().contains("xyz"));
         assertTrue( paymentP.getTextbankName().contains("RTP"));
-
+        System.out.println("Compra realizada com SUCESSO!");
 
     }
 
+    @Story("Criar uma conta")
+    @Description("Criar uma conta de usuario com sucesso")
     @Test
     public void CreateAccount(){
         HomePage home = new HomePage();
@@ -158,10 +162,11 @@ public class TesteIndividuais extends BaseTests{
 
         //SEÇÃO YOUR PERSONAL INFORMATION
         // Inserindo o email  para criação de conta
-        String emailcliente= "Angela97q12ousa@gmail.com";
+        String emailcliente= "angela8459rousa@gmail.com";
         String primeironome="testecwi";
         String ultimonome=" santos";
 
+        //inserir email do cliente
         login.fillEmailCreate(emailcliente);
 
         //Clicar em create account
@@ -195,7 +200,6 @@ public class TesteIndividuais extends BaseTests{
         createAccountP.clickOptSpecialOffers();
 
         //SEÇÃO DO FORMULÁRIO YOUR ADDRESS
-
         //Company
         createAccountP.fillCompany("empresa fantasia");
 
@@ -238,14 +242,19 @@ public class TesteIndividuais extends BaseTests{
         //Valida se o usuario logado foi o usuario criado
         assertTrue(myAccountP.getNameLogin().contains(primeironome));
         assertTrue(myAccountP.getNameLogin().contains(ultimonome));
+        System.out.println("Cadastro realizado com SUCESSO!");
+
 
     }
+    @Story("Realizar pesquisa de produto")
+    @Description("Realizar uma pesquisa de um produto da loja com sucesso")
     @Test
     public void testSearch(){
-        //Iniciar as paginas
+        //Iniciar as páginas
         HomePage home = new HomePage();
         SearchPage search= new SearchPage();
 
+        //Inserir nome da pesquisa
         String quest= "DRESS";
         String questResultQtd= "7";
 
@@ -258,8 +267,6 @@ public class TesteIndividuais extends BaseTests{
         assertThat(search.getTextHeading_counter(), CoreMatchers.containsString(questResultQtd));
 
     }
-
-
 
 }
 
