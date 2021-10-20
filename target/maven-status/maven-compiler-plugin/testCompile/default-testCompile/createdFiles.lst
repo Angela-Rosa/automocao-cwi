@@ -22,7 +22,6 @@ utils\Utils.class
 elementMapper\PaymentElementMapper.class
 pageObjects\AddressPage.class
 pageObjects\LoginPage.class
-tests\TesteIndividuais.class
 pageObjects\CartPage.class
 elementMapper\SearchPageElementMapper.class
 pageObjects\SearchPage.class

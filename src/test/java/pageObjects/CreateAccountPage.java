@@ -69,7 +69,7 @@
         years.sendKeys(y);
     }
 
-    @Step("Clicar em outras opções para conta ")
+    @Step("Clicou em outras opções para conta ")
     public  void clickOptnewsletter(){
         newsletter.click();
     }
@@ -117,19 +117,19 @@
     public void selectId_Country(String idCountry) {id_country.sendKeys(idCountry);
     }
 
-   @Step("Inserir outras informções")
+   @Step("Inseriu outras informções")
     public void fillOther(String Other) {other.sendKeys(Other);
     }
 
-    @Step("Inserir telefone 1")
+    @Step("Inseriu telefone 1")
     public void fillPhone(String Phone1) {phone.sendKeys(Phone1);
     }
 
-    @Step("Inserir telefone mobile")
+    @Step("Inseriu telefone mobile")
     public void fillPhoneMobile(String PhoneM) {phone_mobile.sendKeys(PhoneM);
     }
 
-    @Step("Inserir outa opção de endereço")
+    @Step("Inseriu outa opção de endereço")
     public void fillMyAlias(String Alias) {
         alias.clear();
         alias.sendKeys(Alias);
